@@ -12,13 +12,11 @@
 - [Add graphQL](https://www.toptal.com/graphql/creating-your-first-graphql-api) A few changes need to be made in this step.
   - 1) Install `@graphql-tools/schema`. This will allow you to use `makeExecutableSchema`
   - 2) Add this code block to the index.js file that starts the server:
-  ```
-  const apollo Server = new ApolloServer({typeDefs, resolvers});
 
-  async function startServer() {
+`  const apollo Server = new ApolloServer({typeDefs, resolvers});`
+`async function startServer() {
   await apolloServer.start();
-  apolloServer.applyMiddleware({ app });
-  }
-  startServer();```
+  apolloServer.applyMiddleware({ app });`
+ `startServer();`
 
-      - An error saying that you must `await` the `apolloServer.start` function will occur without this code.
+  An await error will occur with out this code.
