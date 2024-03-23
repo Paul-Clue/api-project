@@ -1,8 +1,7 @@
-import React from "react";
+import React from 'react';
 import routes from '../../routes';
 
-const App = () => {
-
+function App() {
   return (
     <>
       <header>
@@ -12,7 +11,7 @@ const App = () => {
         {routes()}
       </div>
     </>
-  )
+  );
 }
 
 export default App;

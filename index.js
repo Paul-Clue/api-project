@@ -18,17 +18,13 @@ const typeDefs = gql`
 
 // Define resolvers map for API definitions in SDL
 const resolvers = {
-   Query: {
-       sayHello: (obj, args, context, info) => {
-           return `Hello ${ args.name }!`;
-       }
-   },
+  Query: {
+    sayHello: (obj, args, context, info) => `Hello ${args.name}!`,
+  },
 
-   Mutation: {
-       sayHello: (obj, args, context, info) => {
-           return `Hello ${ args.name }!`;
-       }
-   }
+  Mutation: {
+    sayHello: (obj, args, context, info) => `Hello ${args.name}!`,
+  },
 };
 
 // Configure express
@@ -50,5 +46,5 @@ startServer();
 
 // Run server
 app.listen({ port }, () => {
-   console.log(`Server ready at http://localhost:${ port }${ apolloServer.graphqlPath }`);
+  console.log(`Server ready at http://localhost:${port}${apolloServer.graphqlPath}`);
 });
