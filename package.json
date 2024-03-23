@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel ./static/index.html --open",
-    "serve": "babel-node index.js",
+    "serve": "babel-node ./server/ApolloClient/index.js",
     "lint": "eslint  --fix '**/*.{js,jsx}'",
     "format": "prettier **/*.js --write. --config ./.prettierrc",
     "test": "echo \"Error: no test specified\" && exit 1"

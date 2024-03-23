@@ -7,16 +7,4 @@
   - <img width=15 src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" /> Node
   -  <img width=15 src="https://user-images.githubusercontent.com/25181517/192107856-aa92c8b1-b615-47c3-9141-ed0d29a90239.png" /> GraphQL
 ---
-### How to build an run this Project (so far)
-- [Setup React app using parcel](https://www.freecodecamp.org/news/how-to-up-a-react-app-with-parcel/)
-- [Add graphQL](https://www.toptal.com/graphql/creating-your-first-graphql-api) A few changes need to be made in this step.
-  - 1) Install `@graphql-tools/schema`. This will allow you to use `makeExecutableSchema`
-  - 2) Add this code block to the index.js file that starts the server:
-
-`  const apollo Server = new ApolloServer({typeDefs, resolvers});`
-`async function startServer() {
-  await apolloServer.start();
-  apolloServer.applyMiddleware({ app });`
- `startServer();`
-
-  An await error will occur with out this code.
+### Run this Project (so far)
