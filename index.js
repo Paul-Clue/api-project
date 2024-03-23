@@ -1,16 +1,54 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import App from './components/App'
+import gql from 'graphql-tag';
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const port = process.env.PORT || 8080;
 
-root.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-);
+// Define APIs using GraphQL SDL
+const typeDefs = gql`
+   type Query {
+       sayHello(name: String!): String!
+   }
 
-// ReactDOM.render(<h1>Hello world!</h1>, document.getElementById("root"))
+   type Mutation {
+       sayHello(name: String!): String!
+   }
+`;
+
+// Define resolvers map for API definitions in SDL
+const resolvers = {
+   Query: {
+       sayHello: (obj, args, context, info) => {
+           return `Hello ${ args.name }!`;
+       }
+   },
+
+   Mutation: {
+       sayHello: (obj, args, context, info) => {
+           return `Hello ${ args.name }!`;
+       }
+   }
+};
+
+// Configure express
+const app = express();
+
+// Build GraphQL schema based on SDL definitions and resolvers maps
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+// Build Apollo server
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+async function startServer() {
+  await apolloServer.start();
+  apolloServer.applyMiddleware({ app });
+}
+startServer();
+
+// Run server
+app.listen({ port }, () => {
+   console.log(`Server ready at http://localhost:${ port }${ apolloServer.graphqlPath }`);
+});
