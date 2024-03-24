@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "parcel ./static/index.html --open",
     "serve": "babel-node ./server/ApolloClient/index.js",
@@ -32,6 +33,7 @@
   "dependencies": {
     "@apollo/client": "^3.9.9",
     "@graphql-tools/schema": "^10.0.3",
+    "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
     "express": "^4.19.1",
     "graphql": "^16.8.1",
