@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import graphqlSchema from '../graphql-schema.js';
+// import booksResolver from '../resolvers/booksResolver.js'
+import booksResolver from '../resolvers/booksResolver/booksResolver.js'
 // import { makeExecutableSchema } from '@graphql-tools/schema';
 // import {
 //   GraphQLDate,
@@ -36,34 +38,34 @@ const port = process.env.PORT || 8080;
 //     sayHello(name: String!): String!
 //   }
 // `;
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
+// const books = [
+//   {
+//     title: 'The Awakening',
+//     author: 'Kate Chopin',
+//   },
+//   {
+//     title: 'City of Glass',
+//     author: 'Paul Auster',
+//   },
+// ];
 
 // Define resolvers map for API definitions in SDL
-const resolvers = {
-  // Date: GraphQLDate,
-  // Time: GraphQLTime,
-  // DateTime: GraphQLDateTime,
-  Query: {
-    books: () => books,
-  },
+// const resolvers = {
+//   // Date: GraphQLDate,
+//   // Time: GraphQLTime,
+//   // DateTime: GraphQLDateTime,
+//   Query: {
+//     books: () => books,
+//   },
 
-  // Query: {
-  //   books: (obj, args, context, info) => `Hello ${args.name}!`
-  // },
+//   // Query: {
+//   //   books: (obj, args, context, info) => `Hello ${args.name}!`
+//   // },
 
-  // Mutation: {
-  //   sayHello: (obj, args, context, info) => `Hello ${args.name}!`
-  // }
-};
+//   // Mutation: {
+//   //   sayHello: (obj, args, context, info) => `Hello ${args.name}!`
+//   // }
+// };
 
 // Configure express
 const app = express();
@@ -74,7 +76,7 @@ const app = express();
 // Build Apollo server
 const apolloServer = new ApolloServer({
   typeDefs: graphqlSchema,
-  resolvers,
+  resolvers: booksResolver,
   introspection: true
 });
 async function startServer() {
